@@ -57,6 +57,6 @@ struct TwoSat{
 	}
 }
 ]]></content>
-  <tabTrigger>twoSat</tabTrigger>
+  <tabTrigger>ztwoSat</tabTrigger>
   <source>source.cpp</source>
 </snippet>
