@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+ll fat[N], inv[N];
+void process()
+{
+	fat[0] = fat[1] = inv[0] = inv[1] = 1;
+	for(int i=2;i<N;++i)
+		fat[i] = (fat[i-1]*i)%mod, inv[i] = mod - (mod/i)*inv[mod%i]%mod;
+}
+]]></content>
+  <tabTrigger>zinvMod</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

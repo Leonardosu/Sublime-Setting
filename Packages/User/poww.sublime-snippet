@@ -1,0 +1,7 @@
+<snippet>
+    <content><![CDATA[
+inline ll poww(ll a, ll b){ll res = 1LL;while (b > 0LL){if(b & 1) res = (res * a)%mod;a = (a * a)%mod;b >>= 1;}return res;}
+]]></content>
+  <tabTrigger>zpoww</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

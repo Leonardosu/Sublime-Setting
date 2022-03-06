@@ -1,0 +1,50 @@
+<snippet>
+    <content><![CDATA[
+
+#define N 1000050
+#define S 26
+
+int n, id;
+struct node
+{
+	node *prox[S];
+
+	node()
+	{
+		for(int i = 0; i < S; i++) prox[i] = NULL;
+	}
+};
+
+node *tree[N];
+
+void Insert(node *root, string s)
+{
+	for(int i = 0; i < s.size(); i++)
+	{
+		int id = s[i] - 'a';
+
+		if(!root->prox[id]) root->prox[id] = new node();
+
+		root = root->prox[id];
+	}
+}
+
+bool query(node *root, string s)
+{
+	for(int i = 0; i < s.size(); i++)
+	{
+		int id = s[i] - 'a';
+
+		if(!root->prox[id]) return false;
+
+		root = root->prox[id];
+	}
+
+	return true;
+}
+
+]]></content>
+  <tabTrigger>ztrie</tabTrigger>
+  <source>source.cpp</source>
+</snippet>
+

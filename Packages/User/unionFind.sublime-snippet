@@ -1,0 +1,22 @@
+<snippet>
+    <content><![CDATA[
+const int N = 
+int pai[N],lv[N];
+void reset(int n){for(int i=0;i<n;++i)pai[i]=i,lv[i]=0;}
+int find(int x)
+{
+	if(pai[x] == x) return x;
+	return pai[x] = find(pai[x]);
+}
+void join(int x,int y)
+{
+	x=find(x),y=find(y);if(x==y) return;
+	if(lv[x]>lv[y]) swap(x,y);
+	if(lv[x]==lv[y]) lv[x]++;
+	pai[y]=x;
+}
+//Check max value of N !!!!
+]]></content>
+  <tabTrigger>zzUnionFind</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

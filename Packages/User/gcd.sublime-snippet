@@ -1,0 +1,7 @@
+<snippet>
+    <content><![CDATA[
+ll gcd (ll a, ll b) { while (b) { a %= b,swap(a, b);}return a;}
+]]></content>
+  <tabTrigger>zgcd</tabTrigger>
+  <source>source.cpp</source>
+</snippet>
