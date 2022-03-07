@@ -1,11 +1,9 @@
-# Sublime-Setting
-
-# Package:
-## CMD:
+# Packages:
+### CMD:
     - Key bind:
         alt + c, alt + d
     - Open cmd on current file path
-## User:
+### User:
     Snippet, build and key binds.
     - build1:
         type "zt" to write c++ template with many cases tests.
