@@ -1,4 +1,6 @@
-# Packages:
+# Personal Sublime Text Settings
+
+## Sublime packages:
 ### CMD:
     - Key bind:
         alt + c, alt + d
@@ -37,5 +39,13 @@
     - Union Find:
         "zzUnionFind"
 
+## Create a cmd Macro:
+Macro to run a python script that make a folder with _n_  C++ files.
+
+1. Make path C:\bat\
+2. Create the file "macros.doskey" and write: "gen=python3 python_file_name.py $1 $2"
+3. Type in cmd:
+    -   reg add "HKCU\Software\Microsoft\Command Processor" /v Autorun /d "doskey /macrofile=\"C:\bat\macros.doskey\"" /f
+    -   reg query "HKCU\Software\Microsoft\Command Processor" /v Autorun
 
 
