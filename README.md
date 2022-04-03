@@ -48,4 +48,10 @@ Macro to run a python script that make a folder with _n_  C++ files.
     -   reg add "HKCU\Software\Microsoft\Command Processor" /v Autorun /d "doskey /macrofile=\"C:\bat\macros.doskey\"" /f
     -   reg query "HKCU\Software\Microsoft\Command Processor" /v Autorun
 
-
+## Compile <bits/stdc++.h>
+Speed up GCC Compile time
+1. Go to path:
+    C:\MinGW\lib\gcc\mingw32\9.2.0\include\c++\mingw32\bits
+2. Compile with your flags:
+    g++ -O2 -Wall -Wextra -std=c++14 stdc++.h
+*check if stdc++.h.gch was create*
