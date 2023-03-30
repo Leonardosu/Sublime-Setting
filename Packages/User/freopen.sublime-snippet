@@ -1,0 +1,12 @@
+<snippet>
+    <content><![CDATA[
+
+#ifdef ONLINE_JUDGE
+    freopen("input.in", "r", stdin);
+    freopen("output.out", "w", stdout);
+#endif
+
+]]></content>
+  <tabTrigger>zfreopen</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

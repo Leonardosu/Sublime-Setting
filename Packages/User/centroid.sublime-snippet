@@ -1,0 +1,51 @@
+<snippet>
+    <content><![CDATA[
+struct CentroidDecomposition {
+    int n;
+    vector<int> par, vis, sz;
+    vector<vector<int>> adj;
+
+    CentroidDecomposition(vector<vector<int>> adj) : adj(adj){
+        n = adj.size();
+        par.resize(n); vis.resize(n); sz.resize(n);
+        build_cent(n - 1, -1);
+
+        init();
+    }
+
+    int build_sz(int x, int p) {
+        sz[x] = 1;
+        for(int &y : adj[x]) {
+            if(!vis[y] && y != p)
+                sz[x] += build_sz(y, x);            
+        }
+        return sz[x];
+    }
+
+    int get_centroid(int x, int p, int tam) {
+        for(int &y : adj[x]) {
+            if(!vis[y] && y != p && sz[y] * 2 > tam) 
+                return get_centroid(y, x, tam);         
+        }
+        return x;
+    }
+
+    void build_cent(int v, int p) {
+        build_sz(v, -1);
+        int c = get_centroid(v, -1, sz[v]);
+        par[c] = p;
+        vis[c] = true;
+        for (int ch : adj[c]) {
+            if (!vis[ch]) build_cent(ch, c);
+        }
+    }
+
+    // TODO
+    void init() {
+        
+    }
+};
+]]></content>
+  <tabTrigger>zcentroid</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

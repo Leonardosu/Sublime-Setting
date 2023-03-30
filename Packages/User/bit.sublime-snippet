@@ -1,0 +1,31 @@
+<snippet>
+    <content><![CDATA[
+
+struct BIT {
+    using T = long long int;
+    vector<T> bit;
+    int N;
+    BIT(int n) {
+        N = n + 2;
+        bit.resize(n + 2);            
+    }
+    
+    void update(int x, T val = 1) {
+        x++;
+        while(x < N)
+            bit[x] += val, x += x&(-x);
+    }    
+    int query(int x) {
+        if(x <= 0) return 0;
+        x++;
+        T sum = 0;
+        while(x > 0)
+            sum += bit[x], x -= x&(-x);
+        return sum;
+    }
+};
+
+]]></content>
+  <tabTrigger>zBit</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

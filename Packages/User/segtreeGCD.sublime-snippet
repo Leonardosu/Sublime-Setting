@@ -1,0 +1,48 @@
+<snippet>
+    <content><![CDATA[
+struct SegmentTree {
+    #define e (2*no+1)
+    #define d (2*no+2)
+    int *st;
+    int n;
+
+    SegmentTree(int arr[], int n) : n(n){
+        int height = (int)(ceil(log2(n)));
+        int size = 2*(int)pow(2, height)-1;
+        st = new int[size];
+        build(0, arr, 0, n-1);
+    }
+
+    int build(int no, int arr[], int ss, int se) {
+        if (ss==se) {
+            st[no] = arr[ss];
+            return st[no];
+        }
+        int mid = ss+(se-ss)/2;
+        st[no] = gcd(build(no*2+1, arr, ss, mid),
+                     build(no*2+2, arr, mid+1, se));
+        return st[no];
+    }
+
+    int findGcd(int no, int ini, int fim, int L, int R) {
+        if (ini>R || fim < L)
+            return 0;
+        if (L<=ini && R>=fim)
+            return st[no];
+
+        int mid = (fim+ini)/2;
+        return gcd(findGcd(no*2+1, ini, mid, L, R),
+                   findGcd(no*2+2, mid+1, fim, L, R));
+    }
+     
+    int query(int L, int R) {
+        assert(L<=R);
+        assert(L>=0 && L<=n-1);
+        assert(R>=0 && R<=n-1);
+        return findGcd(0, 0, n-1, L, R);
+    }
+};
+]]></content>
+  <tabTrigger>zzsegtreegcd</tabTrigger>
+  <source>source.cpp</source>
+</snippet>
