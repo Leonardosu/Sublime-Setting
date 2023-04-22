@@ -1,0 +1,27 @@
+<snippet>
+    <content><![CDATA[
+int sgn(ll x) { return (x > 0) - (x < 0); }
+struct Polygon {
+    int n;
+    vector<pt> pol;
+    Polygon(vector<pt> poly = {}) : pol(poly) {
+        n = sz(pol);
+    }
+
+    bool inside(pt p, bool strict = true) { //O(log(n))
+        int a = 1, b = n - 1, r = !strict;
+        if (n < 3) return r && onSegment(pol[0], pol.back(), p);
+        if (sgn(pol[0].cross(pol[a], pol[b])) > 0) swap(a, b);
+        if (sgn(pol[0].cross(pol[a], p)) >= r || sgn(pol[0].cross(pol[b], p)) <= -r)
+            return false;
+        while (abs(a - b) > 1) {
+            int c = (a + b) / 2;
+            (sgn(pol[0].cross(pol[c], p)) > 0 ? b : a) = c;
+        }
+        return sgn(pol[a].cross(pol[b], p)) < r;
+    }
+};
+]]></content>
+  <tabTrigger>zpolygon</tabTrigger>
+  <source>source.cpp</source>
+</snippet>
