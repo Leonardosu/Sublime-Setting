@@ -3,10 +3,12 @@
 #include "bits/stdc++.h"
 #define f first
 #define s second
+#define endl '\n'
 #define pb push_back
 #define sz(x) (int)(x).size()
-#define ALL(x) x.begin(),x.end()
+#define all(x) x.begin(),x.end()
 #define present(c, x) (c.find(x) != c.end())
+
 using namespace std;
 typedef long long ll;
 typedef pair<int, int> pii;
@@ -17,7 +19,7 @@ void solve_task() {
 }
 
 int main() {
-    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin.tie(0)->sync_with_stdio(0);
 
     int T_T = 1;
     cin>>T_T;
