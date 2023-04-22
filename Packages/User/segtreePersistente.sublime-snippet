@@ -1,0 +1,38 @@
+<snippet>
+    <content><![CDATA[
+struct node {
+    node *l = this, *r = this;
+    int val = 0;
+};
+
+node* update(node *curr, int ini, int fim, int pos, int v) {
+    node *root = new node();
+    if(ini == fim) {
+        root->val = curr->val + v;
+    } else {
+        int mid = (ini+fim)>>1;
+        if(pos <= mid) {
+            root->l = update(curr->l, ini, mid, pos, v);
+            root->r = curr->r;
+        } else {
+            root->l = curr->l;
+            root->r = update(curr->r, mid+1, fim, pos, v);
+        }
+        root->val = root->l->val + root->r->val;
+    }
+
+    return root;
+}
+
+int query(node *curr, int ini, int fim, int l, int r) {
+    if(fim < l || ini > r) return 0;
+    if(l<=ini && fim<=r) return curr->val;
+
+    int mid = (ini+fim)>>1;
+    return query(curr->l, ini, mid, l, r) + query(curr->r, mid+1, fim, l, r); 
+}
+vector<node*> versoes = {new node()};
+]]></content>
+  <tabTrigger>zsegPersistente</tabTrigger>
+  <source>source.cpp</source>
+</snippet>
