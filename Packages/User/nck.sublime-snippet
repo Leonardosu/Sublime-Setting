@@ -1,0 +1,21 @@
+<snippet>
+    <content><![CDATA[
+const ll N = 2e5 + 1, mod = 1e9 + 7;
+ll fn[N], fd[N], iv[N];
+
+void initnck() {
+    iv[1] = fn[1] = fd[1] = fn[0] = fd[0] = 1;
+    for (ll i = 2; i < N; i++){
+        iv[i] = (mod - (mod / i) * iv[mod % i] % mod) % mod;
+        fn[i] = fn[i - 1] * i % mod;
+        fd[i] = fd[i - 1] * iv[i] % mod;
+    }
+}
+
+ll nck(ll n, ll k) {
+    return fn[n] * fd[n - k] % mod * fd[k] % mod;
+}
+]]></content>
+  <tabTrigger>znck</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

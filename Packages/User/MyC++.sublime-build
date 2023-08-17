@@ -5,6 +5,6 @@
     "selector": "source.c, source.c++", 
     "variants": [{ 
         "name": "Run", 
-        "shell_cmd": "g++ -O2 -Wall -Wextra -std=c++17 \"${file}\" -o \"${file_path}\\\\${file_base_name}\" && \"${file_path}\\\\${file_base_name}\" < input.txt" 
+        "shell_cmd": "g++ -O2 -Wall -Wextra -std=c++17 -Wl,--stack=268435456 \"${file}\" -o \"${file_path}\\\\${file_base_name}\" && \"${file_path}\\\\${file_base_name}\" < input.txt" 
     }]
 }

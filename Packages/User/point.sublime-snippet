@@ -1,7 +1,8 @@
 <snippet>
     <content><![CDATA[
+struct pt;
+using P=pt;
 struct pt {
-    using P = pt;
     using T = long long;
 
     T x, y;

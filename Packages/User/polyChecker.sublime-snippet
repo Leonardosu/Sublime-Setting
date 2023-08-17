@@ -1,0 +1,43 @@
+<snippet>
+    <content><![CDATA[
+ll dist(pt a, pt b) {
+    return 1LL*(a.x - b.x)*(a.x - b.x) 
+            + 1LL*(a.y - b.y)*(a.y - b.y);
+}
+auto square = [](vector<pt> &pts) {
+    bool ok = false;
+
+    ll d2=dist(pts[0],pts[1]);
+    ll d3=dist(pts[0],pts[2]);
+    ll d4=dist(pts[0],pts[3]);
+
+    if(d2==0||d3==0||d4==0) return false;
+    if(d2 == d3 && 2 * d2 == d4 && 
+        2LL * dist(pts[1], pts[3]) == dist(pts[1], pts[2]))
+        ok = true;
+
+    if(d3 == d4 && 2 * d3 == d2 && 
+        2LL * dist(pts[2], pts[1]) == dist(pts[2], pts[3]))
+        ok = true;
+
+    if(d2 == d4 && 2 * d2 == d3 && 
+        2LL * dist(pts[1], pts[2]) == dist(pts[1], pts[3]))
+        ok = true;
+
+    return ok;
+};
+
+auto rectangle = [](vector<pt> &pts) {
+    auto ortogonal = [](pt a, pt b, pt c) {
+        return (b.x-a.x)*(b.x-c.x) + (b.y-a.y)*(b.y-c.y) == 0;
+    };
+
+    pt a=pts[0],b=pts[1],c=pts[2],d=pts[3];
+    
+    return ortogonal(a,b,c) && ortogonal(b,c,d) && ortogonal(c,d,a);
+};
+
+]]></content>
+  <tabTrigger>zpolychecker</tabTrigger>
+  <source>source.cpp</source>
+</snippet>

@@ -23,6 +23,10 @@ struct BIT {
             sum += bit[x], x -= x&(-x);
         return sum;
     }
+
+    //for(n-1, 0,-1)
+    //    ans += bit.query(v[i])
+    //    bit.update(v[i])
 };
 
 ]]></content>
